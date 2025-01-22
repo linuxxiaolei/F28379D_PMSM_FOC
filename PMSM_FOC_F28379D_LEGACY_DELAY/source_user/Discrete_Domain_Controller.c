@@ -1,18 +1,18 @@
 /*
  * Discrete_Domain_Controller.c
  *
- *  Created on: 2019Äê12ÔÂ27ÈÕ
+ *  Created on: 2019å¹´12æœˆ27æ—¥
  *      Author: YY
  */
 
-//Í·ÎÄ¼þ°üº¬£¬ÒÑÔÚ"Global_Func...Call.h"ÖÐ°üº¬Í·ÎÄ¼þ"Discrete_Domain_Controller.h",´Ë´¦²»¿ÉÖØ¸´°üº¬£¬·ñÔòÊÓÎªÖØ¶¨Òå£»
+//å¤´æ–‡ä»¶åŒ…å«ï¼Œå·²åœ¨"Global_Func...Call.h"ä¸­åŒ…å«å¤´æ–‡ä»¶"Discrete_Domain_Controller.h",æ­¤å¤„ä¸å¯é‡å¤åŒ…å«ï¼Œå¦åˆ™è§†ä¸ºé‡å®šä¹‰ï¼›
 // #include "Discrete_Domain_Controller.h"   
 #include "Global_Functions_Variables_Call.h"
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-// ÀëÉ¢Óò¸´Ê¸Á¿Í¬²½×ø±êÏµPIµçÁ÷µ÷½ÚÆ÷Éè¼ÆÓëÊý×ÖÊµÏÖ
+// ç¦»æ•£åŸŸå¤çŸ¢é‡åŒæ­¥åæ ‡ç³»PIç”µæµè°ƒèŠ‚å™¨è®¾è®¡ä¸Žæ•°å­—å®žçŽ°
 // Discrete-Time Complex Vector Synchronous Frame PI Current Regulator Design and Digital implementation
-//²Î¿¼ÎÄÏ×¡¶Discrete-Time Current Regulator Design for AC Machine Drives. #Hongrae Kim¡·
+//å‚è€ƒæ–‡çŒ®ã€ŠDiscrete-Time Current Regulator Design for AC Machine Drives. #Hongrae Kimã€‹
 //*******************************************************************************************************************
 void DiscreteTime_CV_Controller(DCV_CONTROLLER *vd, DCV_CONTROLLER *vq)
 {
@@ -26,7 +26,7 @@ void DiscreteTime_CV_Controller(DCV_CONTROLLER *vd, DCV_CONTROLLER *vq)
 	vd->Err = vd->Ref - vd->Fdb;
 	vq->Err = vq->Ref - vq->Fdb;
 
-    /*µÚÒ»°æÊµÏÖ¹ý³ÌÓÐ´íÎó£¬²»Ó¦¸ÃÖ±½ÓÏÈÕ¹¿ªÔÙ½Ç¶È²¹³¥£¬Ó¦¸ÃÊÓÎªÕûÌå*/
+    /*ç¬¬ä¸€ç‰ˆå®žçŽ°è¿‡ç¨‹æœ‰é”™è¯¯ï¼Œä¸åº”è¯¥ç›´æŽ¥å…ˆå±•å¼€å†è§’åº¦è¡¥å¿ï¼Œåº”è¯¥è§†ä¸ºæ•´ä½“*/
     /*Compute the process temporary data*/              
     Ud_Temp1 = _IQmpy(vd->Err_Beat_1,_IQcos(We_Ts));
     Ud_Temp2 = _IQmpy(vd->Err_Beat_1,_IQsin(We_Ts)); 
@@ -51,7 +51,7 @@ void DiscreteTime_CV_Controller(DCV_CONTROLLER *vd, DCV_CONTROLLER *vq)
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-// ¸Ä½øÀëÉ¢Óò¸´Ê¸Á¿Í¬²½×ø±êÏµPIµçÁ÷µ÷½ÚÆ÷Éè¼ÆÓëÊý×ÖÊµÏÖ
+// æ”¹è¿›ç¦»æ•£åŸŸå¤çŸ¢é‡åŒæ­¥åæ ‡ç³»PIç”µæµè°ƒèŠ‚å™¨è®¾è®¡ä¸Žæ•°å­—å®žçŽ°
 // Improved Discrete-Time Complex Vector Synchronous Frame PI Current Regulator  Implementation
 //*******************************************************************************************************************
 void Improved_DCV_Controller(DCV_CONTROLLER *vd, DCV_CONTROLLER *vq)
@@ -62,11 +62,11 @@ void Improved_DCV_Controller(DCV_CONTROLLER *vd, DCV_CONTROLLER *vq)
     
     We_Ts = _IQmpy(qep1.Speed_We,T_Sample);
        
-    /* Compute and the input error */
-	vd->Err = vd->Ref - vd->Fdb;
-	vq->Err = vq->Ref - vq->Fdb;
+    /* Compute and the input error */ 
+    vd->Err = vd->Ref - vd->Fdb;
+    vq->Err = vq->Ref - vq->Fdb;
 
-    /*µÚÒ»°æÊµÏÖ¹ý³ÌÓÐ´íÎó£¬²»Ó¦¸ÃÖ±½ÓÏÈÕ¹¿ªÔÙ½Ç¶È²¹³¥£¬Ó¦¸ÃÊÓÎªÕûÌå*/
+    /*ç¬¬ä¸€ç‰ˆå®žçŽ°è¿‡ç¨‹æœ‰é”™è¯¯ï¼Œä¸åº”è¯¥ç›´æŽ¥å…ˆå±•å¼€å†è§’åº¦è¡¥å¿ï¼Œåº”è¯¥è§†ä¸ºæ•´ä½“*/
     /*Compute the process temporary data*/              
     Ud_Temp1 = _IQmpy(vd->Err_Beat_1,_IQcos(We_Ts));
     Ud_Temp2 = _IQmpy(vd->Err_Beat_1,_IQsin(We_Ts)); 
@@ -78,9 +78,9 @@ void Improved_DCV_Controller(DCV_CONTROLLER *vd, DCV_CONTROLLER *vq)
     Uq_Temp3 = _IQmpy(EXP_K_AT,Uq_Temp1-Ud_Temp2);
     Uq_Temp4 = vq->Err - Uq_Temp3;
              
-	/* Compute and Saturate the output of the Discrete Controller*/
-	vd->Uc = vd->Uc + _IQmpy(vd->Kp, Ud_Temp4);
-	vd->Uc = _IQsat(vd->Uc, vd->OutMax, vd->OutMin);
+    /* Compute and Saturate the output of the Discrete Controller*/
+    vd->Uc = vd->Uc + _IQmpy(vd->Kp, Ud_Temp4);
+    vd->Uc = _IQsat(vd->Uc, vd->OutMax, vd->OutMin);
     vq->Uc = vq->Uc + _IQmpy(vq->Kp, Uq_Temp4);
     vq->Uc = _IQsat(vq->Uc, vq->OutMax, vq->OutMin);
     //---------------------------------------------------------------------------------------------------------------------------------------
